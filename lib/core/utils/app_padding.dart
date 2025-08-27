@@ -1,7 +1,7 @@
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppPadding {
-  static var defaultPadding = REdgeInsets.symmetric(horizontal: 32);
+  static var defaultPadding = REdgeInsets.symmetric(horizontal: 32,vertical: 24);
   static var paddingH14V9 = REdgeInsets.symmetric(horizontal: 14,vertical: 9);
   static var paddingH34V46 = REdgeInsets.symmetric(
     horizontal: 34,
