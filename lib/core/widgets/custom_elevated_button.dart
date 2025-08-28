@@ -10,23 +10,17 @@ class CustomElevatedButton extends StatelessWidget {
   final void Function()? onPressed;
   final String textEleBtn;
   final String? svgPath;
-  final double? height;
-  final double? width;
 
   const CustomElevatedButton({
     super.key,
     required this.textEleBtn,
     this.svgPath,
-    this.height,
-    this.width,
     required this.onPressed,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: width,
-      height: height,
       child: Directionality(
         textDirection: TextDirection.rtl,
         child: ElevatedButton.icon(

@@ -23,4 +23,5 @@ abstract class Navigation {
   }
 
   static goBack(context) => Navigator.pop(context);
+
 }

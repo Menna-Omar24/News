@@ -4,12 +4,12 @@ import 'package:news/core/utils/app_assets.dart';
 import 'package:news/core/utils/app_color.dart';
 import 'package:news/core/utils/app_padding.dart';
 import 'package:news/core/utils/app_text_style.dart';
+import 'package:news/features/home/views/main_view.dart';
 
 import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_route.dart';
 import '../../../core/utils/app_string.dart';
 import '../../../core/widgets/custom_elevated_button.dart';
-import '../../search_map/views/search_map_view.dart';
 
 class LetsStartView extends StatelessWidget {
   static const String id = AppRoute.letsStart;
@@ -70,8 +70,8 @@ class LetsStartView extends StatelessWidget {
                       onPressed: () {
                         Navigation.goTo(
                           context,
-                          SearchMapView(),
-                          type: NavigationType.pushReplacement,
+                          MainView(),
+                          type: NavigationType.pushAndRemoveUntil,
                         );
                       },
                       textEleBtn: AppString.explore,

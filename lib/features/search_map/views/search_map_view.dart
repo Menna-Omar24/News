@@ -7,9 +7,7 @@ import 'package:news/core/utils/app_string.dart';
 import 'package:news/core/utils/app_text_style.dart';
 import 'package:news/core/widgets/custom_elevated_button.dart';
 import 'package:news/core/widgets/custom_svg_wrapper.dart';
-import 'package:news/features/home/views/home_view.dart';
 
-import '../../../core/helper/navigation.dart';
 import '../../../core/utils/app_padding.dart';
 
 class SearchMapView extends StatelessWidget {
@@ -54,11 +52,7 @@ class SearchMapView extends StatelessWidget {
                     bottom: 28.h,
                     left: 133.w,
                     child: CustomElevatedButton(
-                      onPressed: () => Navigation.goTo(
-                        context,
-                        HomeView(),
-                        type: NavigationType.pushAndRemoveUntil,
-                      ),
+                      onPressed: () {},
                       textEleBtn: AppString.getStarted,
                     ),
                   ),

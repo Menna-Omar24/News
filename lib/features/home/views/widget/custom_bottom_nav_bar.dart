@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:line_icons/line_icons.dart';
+import 'package:news/core/utils/app_padding.dart';
 
-import '../../../../core/utils/app_assets.dart';
 import '../../../../core/utils/app_color.dart';
 import '../../../../core/utils/app_string.dart';
 import '../../../../core/utils/app_text_style.dart';
-import '../../../../core/widgets/custom_svg_wrapper.dart';
 import '../../cubit/bottom_nav/bottom_nav_cubit.dart';
 import '../../cubit/bottom_nav/bottom_nav_state.dart';
 
@@ -18,41 +19,45 @@ class CustomBottomNavBar extends StatelessWidget {
     return BlocBuilder<BottomNavCubit, BottomNavState>(
       builder: (context, state) {
         var cubit = BottomNavCubit.get(context);
-        return ClipRRect(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.r),
-            topRight: Radius.circular(20.r),
-          ),
-          child: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: const Color.fromRGBO(252, 233, 238, 0.8),
-            elevation: 0,
-            selectedItemColor: AppColor.blackLight,
-            unselectedItemColor: AppColor.grey,
-            selectedFontSize: 10.sp,
-            unselectedFontSize: 10.sp,
-            selectedLabelStyle: AppTextStyle.fs12Fw600Cw,
-            unselectedLabelStyle: AppTextStyle.fs14Fw400Cg,
-            currentIndex: cubit.currentIndex,
-            onTap: (index) => cubit.changeIndex(index),
-            items: [
-              BottomNavigationBarItem(
-                icon: CustomSvgWrapper(svgPath: AppAssets.homeTab),
-                label: AppString.home,
-              ),
-              BottomNavigationBarItem(
-                icon: CustomSvgWrapper(svgPath: AppAssets.explore),
-                label: AppString.explore,
-              ),
-              BottomNavigationBarItem(
-                icon: CustomSvgWrapper(svgPath: AppAssets.bookmarkTab),
-                label: AppString.bookMark,
-              ),
-              BottomNavigationBarItem(
-                icon: CustomSvgWrapper(svgPath: AppAssets.weather),
-                label: AppString.weather,
+        return Container(
+          decoration: BoxDecoration(
+            color: const Color.fromRGBO(252, 233, 238, 0.8),
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(24.r),
+              topRight: Radius.circular(24.r),
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withAlpha(20),
+                blurRadius: 10,
               ),
             ],
+          ),
+          child: Padding(
+            padding: AppPadding.paddingH32V16,
+            child: GNav(
+              selectedIndex: cubit.currentIndex,
+              onTabChange: (index) => cubit.changeIndex(index),
+              rippleColor: Colors.grey[300]!,
+              hoverColor: Colors.grey[200]!,
+              haptic: true,
+              tabBorderRadius: 24,
+              curve: Curves.easeOutExpo,
+              duration: const Duration(milliseconds: 500),
+              gap: 6,
+              color: AppColor.blackLight,
+              activeColor: AppColor.white,
+              iconSize: 24,
+              textStyle: AppTextStyle.fs12Fw600Cw,
+              tabBackgroundColor: AppColor.blackLight,
+              padding: AppPadding.paddingH16V12,
+              tabs: const [
+                GButton(icon: LineIcons.home, text: AppString.home),
+                GButton(icon: LineIcons.compass, text: AppString.explore),
+                GButton(icon: LineIcons.bookmark, text: AppString.bookMark),
+                GButton(icon: LineIcons.cloud, text: AppString.weather),
+              ],
+            ),
           ),
         );
       },
